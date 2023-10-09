@@ -7,7 +7,9 @@ urlpatterns = [
     path('', views.LandingPage, name='landingpage'),
     path('listings/', views.Listings, name='listings'),
     path('newlisting/', views.NewListing, name='newlisting'),
-    path('viewlisting/', views.ViewListing, name='viewlisting'),
-    path('login/', views.login, name='login'),
+    path('listing_<int:listing_id>/', views.ViewListing, name='viewlisting'),
+    path('login/', views.UserLogin, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    
     
 ]

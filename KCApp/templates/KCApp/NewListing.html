@@ -1,7 +1,27 @@
 <p>New Listing Page</p>
+<a href="{% url 'landingpage' %}">home</a>
 
-<form action = "" method = "post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+
+<div>
+    {% if request.user.is_authenticated %}
+        <form action = "" method = "POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            Title: <input type="text" name="Title" placeholder="enter title">
+            <p></p>
+            Description: <input type="text" name="Description" placeholder="enter description">
+            <p></p>
+            Price: <input type="text" name="Price" placeholder="enter price">
+            <p></p>
+            <button type="submit" name="create_listing">Create Listing</button>
+
+        </form>
+
+    {% else %}
+
+        <p>Not logged in, please <a href="{% url 'login' %}">login</a> to create a new listing</p>
+        
+
+    {% endif %}
+</div>
+
