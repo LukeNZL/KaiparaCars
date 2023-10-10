@@ -4,7 +4,7 @@
 
 <div>
     {% if request.user.is_authenticated %}
-        <form action = "" method = "POST">
+        <form action = "" method = "POST" enctype= multipart/form-data>
             {% csrf_token %}
             {{form.as_p}}
             Title: <input type="text" name="Title" placeholder="enter title">
@@ -13,6 +13,9 @@
             <p></p>
             Price: <input type="text" name="Price" placeholder="enter price">
             <p></p>
+   
+            Upload Image: <input type="File" name="Images" id="Images">
+            <p></p>         
             <button type="submit" name="create_listing">Create Listing</button>
 
         </form>

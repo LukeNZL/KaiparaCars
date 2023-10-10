@@ -47,7 +47,7 @@ class ListingForm(ModelForm):
             
             'Title',
             'Description',
-            #'Images',
+            'Images',
             #'Make',
             #'CarModel',
             #'Year',
@@ -63,6 +63,8 @@ class ListingForm(ModelForm):
             'Price',
             #'WOF',
             #'Registration',
+            
+            #'CreatedBy'
             
             
         ]

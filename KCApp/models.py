@@ -32,6 +32,6 @@ class listing(models.Model):
     WOF=models.BooleanField( null=True)
     Registration=models.BooleanField( null=True)
     created = models.DateTimeField(auto_now_add=True)
-    
+    CreatedBy=models.CharField(max_length=200, null=True)
     def __str__(self):
         return self.Title

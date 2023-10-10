@@ -1,4 +1,5 @@
-<p>Login Page</p>
+<h1>My account</h1>
+
 <!--    -->
 <a href="{% url 'landingpage' %}">home</a>
 
@@ -6,6 +7,7 @@
     {% if request.user.is_authenticated %}
         <p>Logged in as {{request.user}}</p>
         <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'mylistings' %}">My Listings</a>
     {% else %}
         <p>No user is currently logged in</p>
         <p>login here</p>
@@ -32,4 +34,3 @@
         </form>
     {% endif %}
 </div>
-

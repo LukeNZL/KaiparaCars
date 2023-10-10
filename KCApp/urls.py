@@ -8,8 +8,10 @@ urlpatterns = [
     path('listings/', views.Listings, name='listings'),
     path('newlisting/', views.NewListing, name='newlisting'),
     path('listing_<int:listing_id>/', views.ViewListing, name='viewlisting'),
-    path('login/', views.UserLogin, name='login'),
+    path('myaccount/', views.Accounts, name='myaccount'),
     path('logout/', views.logoutUser, name='logout'),
+    path('mylistings/', views.MyListing, name='mylistings'),
     
     
-]
+    
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
