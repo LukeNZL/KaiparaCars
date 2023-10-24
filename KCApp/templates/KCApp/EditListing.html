@@ -1,0 +1,23 @@
+<p>New Listing Page</p>
+<a href="{% url 'landingpage' %}">home</a>
+
+
+<div>
+    <h1>Edit Listing</h1>
+    {% if request.user.is_authenticated %}
+
+        <form action = "" method = "POST" enctype= multipart/form-data>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" name="editlisting ">Edit Listing</button>
+           
+        </form>
+
+    {% else %}
+
+        <p>Not logged in, please <a href="{% url 'login' %}">login</a> to edit one of your listings </p>
+        
+
+    {% endif %}
+</div>
+

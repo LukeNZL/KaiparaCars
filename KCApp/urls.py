@@ -11,6 +11,9 @@ urlpatterns = [
     path('myaccount/', views.Accounts, name='myaccount'),
     path('logout/', views.logoutUser, name='logout'),
     path('mylistings/', views.MyListing, name='mylistings'),
+    path('deletelisting/<int:listing_id>/', views.DeleteListing, name='deletelisting'),
+    path('editlisting/<int:listing_id>/', views.EditListing, name='editlisting'),
+ 
     
     
     

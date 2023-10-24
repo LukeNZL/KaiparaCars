@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
-from .models import listing
+from .models import listing, listingcatagory
 # custom form built off of prebuilt django form
 class RegisterForm(UserCreationForm):
     username = forms.CharField(label='username', min_length=4, max_length=150)
@@ -35,12 +35,15 @@ class RegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = User.objects.create_user(
             self.cleaned_data['username'],
-            None,
+            #None,
+            self.cleaned_data['email'],
             self.cleaned_data['password1']
         )
         return user
     
 class ListingForm(ModelForm):
+    category = forms.ModelChoiceField(queryset=listingcatagory.objects.all(), required=False)
+
     class Meta:
         model = listing
         fields = [

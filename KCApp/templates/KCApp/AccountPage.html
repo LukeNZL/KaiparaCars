@@ -8,13 +8,15 @@
         <p>Logged in as {{request.user}}</p>
         <a href="{% url 'logout' %}">Logout</a>
         <a href="{% url 'mylistings' %}">My Listings</a>
+        <a href="{% url 'newlisting' %}">newlisting</a>
+
     {% else %}
         <p>No user is currently logged in</p>
         <p>login here</p>
         <form method = "POST">
             {% csrf_token %}
             <div>
-                <input  type="text" placeholder="Username" name="username">
+                <input  type="text" placeholder="Email" name="email">
                 <input  type="password" placeholder="Password" name="password">
                 <button type="submit" name="login">Login</button>
             </div>

@@ -10,6 +10,11 @@ from django.contrib.auth.models import AbstractUser
 #    USERNAME_FIELD = 'email' 
 #    REQUIRED_FIELDS = []
     
+class listingcatagory(models.Model):
+    name = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return str(self.id) + self.name 
     
 class listing(models.Model):
     
@@ -33,5 +38,9 @@ class listing(models.Model):
     Registration=models.BooleanField( null=True)
     created = models.DateTimeField(auto_now_add=True)
     CreatedBy=models.CharField(max_length=200, null=True)
+    
+    Category= models.ForeignKey(listingcatagory, related_name='listings', on_delete=models.CASCADE, null=True)
+    
+    
     def __str__(self):
         return self.Title
