@@ -6,7 +6,6 @@
     {% if request.user.is_authenticated %}
         <form action = "" method = "POST" enctype= multipart/form-data>
             {% csrf_token %}
-            {{form.as_p}}
             Title: <input type="text" name="Title" placeholder="enter title">
             <p></p>
             Description: <input type="text" name="Description" placeholder="enter description">
@@ -14,10 +13,30 @@
             Price: <input type="text" name="Price" placeholder="enter price">
             <p></p>
    
-            Upload Image: <input type="File" name="Images" id="Images">
+            Upload Image: <input type="File" name="CloudImage" id="CloudImage">
             <p></p> 
-            Catagory: {{ form.category }}   
-            <p></p>      
+            Catagory: {{ form.category }}
+<!--             <select name="category" id="id_category">
+                <option value="" selected>---------</option>
+              
+                <option value="1">1Sedan</option>
+              
+                <option value="2">2Ute</option>
+              
+                <option value="3">3Stationwagon</option>
+              
+                <option value="4">4SUV</option>
+              
+                <option value="5">5Hatchback</option>
+              
+                <option value="6">6Compact</option>
+              
+                <option value="7">7Coupe</option>
+              
+                <option value="8">8Other</option>
+              
+              </select>
+            <p></p>     -->  
             <button type="submit" name="create_listing">Create Listing</button>
            
         </form>

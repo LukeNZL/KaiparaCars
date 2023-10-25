@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -20,7 +21,7 @@ class listing(models.Model):
     
     Title=models.CharField(max_length=30, null=True)
     Description=models.CharField(max_length=200, null=True)
-    Images=models.ImageField(upload_to='images/', null=True)
+    #Images=models.ImageField(upload_to='images/', null=True)
     Make=models.CharField(max_length=200, null=True)
     CarModel=models.CharField(max_length=200, null=True)
     Year=models.IntegerField( null=True)
@@ -41,6 +42,7 @@ class listing(models.Model):
     
     Category= models.ForeignKey(listingcatagory, related_name='listings', on_delete=models.CASCADE, null=True)
     
+    CloudImage = CloudinaryField('image', null=True)
     
     def __str__(self):
         return self.Title

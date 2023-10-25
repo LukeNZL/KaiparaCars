@@ -45,7 +45,7 @@ def NewListing(request):
         
    # else:
    #     return HttpResponseBadRequest()
-    
+    #print(form)
     if request.method == 'POST':
         form=ListingForm(request.POST, request.FILES)
         print(form.data)

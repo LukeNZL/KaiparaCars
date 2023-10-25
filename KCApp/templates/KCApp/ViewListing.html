@@ -4,9 +4,8 @@
 <p>Listing: {{ViewListing}}</p>
 <p>Desription: {{ViewListing.Description}}</p>
 <p>Price:${{ViewListing.Price}}</p>
- 
 
-<img src="{{ ViewListing.Images.url}}" alt=""> 
+<img src="{{ViewListing.CloudImage.url}}" width="400"  alt="Sorry! No image avaliable for this product at this time">
 <br>
 {% if mylisting %} 
     <a href="{% url 'editlisting' listing_id %}">Edit Listing</a>
