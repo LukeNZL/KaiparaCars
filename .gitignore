@@ -1,11 +1,28 @@
 *.pyc
 
+<<<<<<< HEAD
 # Elastic Beanstalk Files
 
 .elasticbeanstalk/*
 
 !.elasticbeanstalk/*.cfg.yml
 
+=======
+
+
+# Elastic Beanstalk Files
+
+
+
+.elasticbeanstalk/*
+
+
+
+!.elasticbeanstalk/*.cfg.yml
+
+
+
+>>>>>>> ed9a03c2eec65ca895d10157fdf1a2e59707d487
 !.elasticbeanstalk/*.global.yml
 .project
 *.pyc

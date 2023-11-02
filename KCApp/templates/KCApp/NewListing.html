@@ -1,7 +1,60 @@
 <p>New Listing Page</p>
+<<<<<<< HEAD
 
 <form action = "" method = "post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Submit">
 </form>
+=======
+<a href="{% url 'landingpage' %}">home</a>
+
+
+<div>
+    {% if request.user.is_authenticated %}
+        <form action = "" method = "POST" enctype= multipart/form-data>
+            {% csrf_token %}
+            Title: <input type="text" name="Title" placeholder="enter title">
+            <p></p>
+            Description: <input type="text" name="Description" placeholder="enter description">
+            <p></p>
+            Price: <input type="text" name="Price" placeholder="enter price">
+            <p></p>
+   
+            Upload Image: <input type="File" name="CloudImage" id="CloudImage">
+            <p></p> 
+            Catagory: {{ form.category }}
+<!--             <select name="category" id="id_category">
+                <option value="" selected>---------</option>
+              
+                <option value="1">1Sedan</option>
+              
+                <option value="2">2Ute</option>
+              
+                <option value="3">3Stationwagon</option>
+              
+                <option value="4">4SUV</option>
+              
+                <option value="5">5Hatchback</option>
+              
+                <option value="6">6Compact</option>
+              
+                <option value="7">7Coupe</option>
+              
+                <option value="8">8Other</option>
+              
+              </select>
+            <p></p>     -->  
+            <button type="submit" name="create_listing">Create Listing</button>
+           
+        </form>
+
+    {% else %}
+
+        <p>Not logged in, please <a href="{% url 'login' %}">login</a> to create a new listing</p>
+        
+
+    {% endif %}
+</div>
+
+>>>>>>> ed9a03c2eec65ca895d10157fdf1a2e59707d487

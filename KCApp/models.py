@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -10,28 +11,38 @@ from django.contrib.auth.models import AbstractUser
 #    USERNAME_FIELD = 'email' 
 #    REQUIRED_FIELDS = []
     
+class listingcatagory(models.Model):
+    name = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return str(self.id) + self.name 
     
 class listing(models.Model):
     
-    Title=models.CharField(max_length=30)
-    Description=models.CharField(max_length=200)
-    Images=models.ImageField(upload_to='images/')
-    Make=models.CharField(max_length=200)
-    CarModel=models.CharField(max_length=200)
-    Year=models.IntegerField(default=0)
-    Odometer=models.IntegerField(default=0)
-    BodyStyle=models.CharField(max_length=200)
-    Transmission=models.CharField(max_length=200)
-    FuelType=models.CharField(max_length=200)
-    EngineSize=models.DecimalField(default=0,decimal_places=2, max_digits=5)
-    DriveType=models.CharField(max_length=200)
-    ExteriorColor=models.CharField(max_length=200)
-    Doors=models.IntegerField(default=0)
-    New=models.BooleanField()
-    Price=models.DecimalField(default=0, decimal_places=2, max_digits=9)
-    WOF=models.BooleanField()
-    Registration=models.BooleanField()
+    Title=models.CharField(max_length=30, null=True)
+    Description=models.CharField(max_length=200, null=True)
+    #Images=models.ImageField(upload_to='images/', null=True)
+    Make=models.CharField(max_length=200, null=True)
+    CarModel=models.CharField(max_length=200, null=True)
+    Year=models.IntegerField( null=True)
+    Odometer=models.IntegerField( null=True)
+    BodyStyle=models.CharField(max_length=200, null=True)
+    Transmission=models.CharField(max_length=200, null=True)
+    FuelType=models.CharField(max_length=200, null=True)
+    EngineSize=models.DecimalField(decimal_places=2, max_digits=5, null=True)
+    DriveType=models.CharField(max_length=200, null=True)
+    ExteriorColor=models.CharField(max_length=200, null=True)
+    Doors=models.IntegerField( null=True)
+    New=models.BooleanField( null=True)
+    Price=models.DecimalField(decimal_places=2, max_digits=9, null=True)
+    WOF=models.BooleanField( null=True)
+    Registration=models.BooleanField( null=True)
     created = models.DateTimeField(auto_now_add=True)
+    CreatedBy=models.CharField(max_length=200, null=True)
+    
+    Category= models.ForeignKey(listingcatagory, related_name='listings', on_delete=models.CASCADE, null=True)
+    
+    CloudImage = CloudinaryField('image', null=True)
     
     def __str__(self):
         return self.Title

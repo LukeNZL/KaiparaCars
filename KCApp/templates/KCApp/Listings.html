@@ -1,1 +1,15 @@
+<<<<<<< HEAD
 <p>Listings Page</p>
+=======
+<p>ListingsPage</p>
+<a href="{% url 'landingpage' %}">home</a>
+
+<div>
+  Listings:
+  <p></p>
+  {% for listings in ListingList %}
+  <a href=" {% url 'viewlisting' listings.id %} ">{{listings}}</a>
+  <p></p>
+  {% endfor %}
+</div>
+>>>>>>> ed9a03c2eec65ca895d10157fdf1a2e59707d487

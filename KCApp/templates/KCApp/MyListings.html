@@ -1,0 +1,13 @@
+<p>MyListingsPage</p>
+<a href="{% url 'landingpage' %}">home</a>
+
+<div>
+    My Listings:
+    <p></p>
+    {% for listings in MyListings %}
+    <a href=" {% url 'viewlisting' listings.id %} ">{{listings}}</a>
+    <p></p>
+    {% endfor %}
+    
+
+</div>
