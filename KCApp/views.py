@@ -6,7 +6,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render 
 from .models import listing
 from django.http import HttpResponseBadRequest
+from .serializers import ListingSerializer
+from rest_framework import viewsets
 # Create your views here.
+
+class ListingsList(viewsets.ModelViewSet):
+    queryset = listing.objects.order_by('created')
+    serializer_class=ListingSerializer
+
 
 def LandingPage(request):
     return render(request, 'LandingPage.html')
@@ -16,19 +23,20 @@ def Listings(request):
     ListingList = listing.objects.order_by('created')
     print(ListingList)
     
-    model_search = listing.objects.values_list('CarModel', flat=True).distinct()
-    year_search = listing.objects.values_list('Year', flat=True).distinct()
-    make_search = listing.objects.values_list('Make', flat=True).distinct()
-    transmission_search = listing.objects.values_list('Transmission', flat=True).distinct()
-    make_search = listing.objects.values_list('Make', flat=True).distinct()
+    #model_search = listing.objects.values_list('CarModel', flat=True).distinct()
+    #year_search = listing.objects.values_list('Year', flat=True).distinct()
+    #make_search = listing.objects.values_list('Make', flat=True).distinct()
+    #transmission_search = listing.objects.values_list('Transmission', flat=True).distinct()
+    #make_search = listing.objects.values_list('Make', flat=True).distinct()
     
     
     
     context = {'ListingList': ListingList,
-               'model_search': model_search,
-               'year_search': year_search,
-               'make_search': make_search,
-               'transmission_search': transmission_search}
+               #'model_search': model_search,
+               #'year_search': year_search,
+               #'make_search': make_search,
+               #'transmission_search': transmission_search
+               }
     
     return render(request, 'Listings.html', context)
 
@@ -67,6 +75,7 @@ def NewListing(request):
 def ViewListing(request, listing_id):
     
     ViewListing = get_object_or_404(listing, id=listing_id)
+    print(ViewListing.CloudImage.url)
     if ViewListing.CreatedBy == request.user.username:
         print("this is my listing")
         mylisting=True
