@@ -7,13 +7,23 @@ from django.shortcuts import render
 from .models import listing
 from django.http import HttpResponseBadRequest
 from .serializers import ListingSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 # Create your views here.
 
 class ListingsList(viewsets.ModelViewSet):
     queryset = listing.objects.order_by('created')
-    serializer_class=ListingSerializer
-
+    serializer_class=ListingSerializer   
+    
+    #def create(self, request):
+    #    file_uploaded = request.FILES.get('file_uploaded')
+    #    content_type = file_uploaded.content_type
+    #    response = "POST API and you have uploaded a {} file".format(content_type)
+    #    return Response(response)
+    
 
 def LandingPage(request):
     return render(request, 'LandingPage.html')
@@ -21,7 +31,7 @@ def LandingPage(request):
 def Listings(request):
     
     ListingList = listing.objects.order_by('created')
-    print(ListingList)
+    #print(ListingList)
     
     #model_search = listing.objects.values_list('CarModel', flat=True).distinct()
     #year_search = listing.objects.values_list('Year', flat=True).distinct()
