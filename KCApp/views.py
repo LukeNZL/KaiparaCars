@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+from django.shortcuts import render
+from .forms import ListingForm
+# Create your views here.
+
+=======
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ListingForm, RegisterForm
 from django.contrib import messages
@@ -25,10 +31,26 @@ class ListingsList(viewsets.ModelViewSet):
     #    return Response(response)
     
 
+>>>>>>> ed9a03c2eec65ca895d10157fdf1a2e59707d487
 def LandingPage(request):
     return render(request, 'LandingPage.html')
 
 def Listings(request):
+<<<<<<< HEAD
+    return render(request, 'Listings.html')
+
+def NewListing(request):
+    form=ListingForm()
+    context = {}
+    context['form']=form
+    return render(request, 'NewListing.html',context)
+
+def ViewListing(request):
+    return render(request, 'ViewListing.html')
+
+def login(request):
+    return render(request, 'login.html')
+=======
     
     ListingList = listing.objects.order_by('created')
     #print(ListingList)
@@ -186,3 +208,4 @@ def logoutUser(request):
 #search functionality
 #Catagories
 #Stripe
+>>>>>>> ed9a03c2eec65ca895d10157fdf1a2e59707d487
