@@ -19,7 +19,7 @@ class listingcatagory(models.Model):
     
 class listing(models.Model):
     
-    Title=models.CharField(max_length=30, null=True)
+    Title=models.CharField(max_length=30)
     Description=models.CharField(max_length=200, null=True)
     #Images=models.ImageField(upload_to='images/', null=True)
     Make=models.CharField(max_length=200, null=True)
@@ -41,6 +41,7 @@ class listing(models.Model):
     CreatedBy=models.CharField(max_length=200, null=True)
     
     Category= models.ForeignKey(listingcatagory, related_name='listings', on_delete=models.CASCADE, null=True)
+    
     
     CloudImage = CloudinaryField('image', null=True)
     
