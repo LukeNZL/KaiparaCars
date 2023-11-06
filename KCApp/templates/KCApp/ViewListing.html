@@ -5,16 +5,13 @@
 <p>Desription: {{ViewListing.Description}}</p>
 <p>Price:${{ViewListing.Price}}</p>
 
-<img
-  src="{{ViewListing.CloudImage.url}}"
-  width="400"
-  alt="Sorry! No image avaliable for this product at this time"
-/>
-<br />
-{% if mylisting %}
-<a href="{% url 'editlisting' listing_id %}">Edit Listing</a>
-<a href="{% url 'deletelisting' listing_id %}">Delete</a>
+<img src="{{ViewListing.CloudImage.url}}" width="400"  alt="Sorry! No image avaliable for this product at this time">
+<br>
+{% if mylisting %} 
+    <a href="{% url 'editlisting' listing_id %}">Edit Listing</a>
+    <a href="{% url 'deletelisting' listing_id %}">Delete</a>
 
-<a href="{% url 'mylistings' %}">Back to My Listings</a>
+    <a href="{% url 'mylistings' %}">Back to My Listings</a>
 
 {% endif %}
+
