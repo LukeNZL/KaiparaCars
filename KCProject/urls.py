@@ -28,5 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('KCApp.urls')),
     path('api/', include(route.urls)),
+    path('authapi/', include('KCApp.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

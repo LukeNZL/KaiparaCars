@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-a)o(fqtypj4@zx&qsxd-+48a^%&ome8m4a2ypmv*zwlu^9$-zt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://kc-django-env.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com/']
 
 
 # Application definition
@@ -95,8 +95,27 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
+CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000','http://192.168.1.29:3000','http://127.0.0.1:3000']
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
+    
+    
+    
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

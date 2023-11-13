@@ -6,25 +6,84 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render 
 from .models import listing
 from django.http import HttpResponseBadRequest
-from .serializers import ListingSerializer
-from rest_framework import viewsets, status
+from .serializers import ListingSerializer, RegistrationSerializer, UserLoginSerializer, UserSerializer
+from rest_framework import viewsets, status,permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication
 
 
 # Create your views here.
 
 class ListingsList(viewsets.ModelViewSet):
+    #permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
+   
+   
+   
     queryset = listing.objects.order_by('created')
-    serializer_class=ListingSerializer   
+    serializer_class=ListingSerializer
+    
+    
+    
     
     #def create(self, request):
     #    file_uploaded = request.FILES.get('file_uploaded')
     #    content_type = file_uploaded.content_type
     #    response = "POST API and you have uploaded a {} file".format(content_type)
     #    return Response(response)
+class UserRegistration(APIView):
+    permission_classes = (permissions.AllowAny,)
     
+    def post(self, request):
+        print("hellow")
+        print(request.data)
+        data=request.data
+        serializer=RegistrationSerializer(data=data)
+        if serializer.is_valid(raise_exception=True):
+            user=serializer.create(data)
+            if user:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+            
+           
+class UserLogin(APIView):  
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (SessionAuthentication,)
+    def post(self, request):
+        data=request.data
+        serializer=UserLoginSerializer(data=data)
+        if serializer.is_valid(raise_exception=True):
+            user=serializer.login_user(data)
+            if user:
+                login(request, user)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class UserLogout(APIView):
+	permission_classes = (permissions.AllowAny,)
+	authentication_classes = ()
+	def post(self, request):
+		logout(request)
+		return Response(status=status.HTTP_200_OK)
+ 
+class UserView(APIView):  
+    authentication_classes = (SessionAuthentication,)
+    def get(self, request):
+        user=request.user
+        serializer=UserSerializer(user)
+        return Response({'user':serializer.data}, status=status.HTTP_200_OK)
+
+class UserList(APIView):
+    permission_classes = (permissions.AllowAny,)
+    
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 def LandingPage(request):
     return render(request, 'LandingPage.html')
 
