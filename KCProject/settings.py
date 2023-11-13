@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'KCApp',
     'cloudinary',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'storages',
 
 
 ]
