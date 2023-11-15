@@ -114,13 +114,13 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1','https://main.d1le8jji4fni0v.amplifyapp.com']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
+CORS_ORIGIN_WHITELIST = ['https://main.d1le8jji4fni0v.amplifyapp.com','http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
 CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com',
     'http://localhost:3000','http://192.168.1.29:3000','http://127.0.0.1:3000']
 
 REST_FRAMEWORK = {
