@@ -125,6 +125,9 @@ CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
 
+CORS_EXPOSE_HEADERS = [
+    "Set-Cookie",
+]
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
