@@ -124,10 +124,13 @@ CORS_ORIGIN_WHITELIST = ['https://main.d1le8jji4fni0v.amplifyapp.com','http://lo
 CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
+CORS_ALLOW_METHODS = ["GET","POST"]
+CORS_ALLOW_HEADERS = [ "accept", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with" ]
 
 CORS_EXPOSE_HEADERS = [
     "Set-Cookie",
 ]
+
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
