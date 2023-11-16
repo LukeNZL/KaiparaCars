@@ -128,7 +128,7 @@ CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com',
 
 SESSION_COOKIE_DOMAIN = '127.0.0.1:3000'
 CSRF_COOKIE_DOMAIN = '127.0.0.1:3000'
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
