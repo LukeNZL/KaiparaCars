@@ -123,11 +123,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CORS_ORIGIN_WHITELIST = ['https://main.d1le8jji4fni0v.amplifyapp.com','http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
 CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com',
-    'http://localhost:3000','http://192.168.1.29:3000','http://127.0.0.1:3000']
+CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
 
-SESSION_COOKIE_DOMAIN = '127.0.0.1:3000'
-CSRF_COOKIE_DOMAIN = '127.0.0.1:3000'
+SESSION_COOKIE_DOMAIN = 'kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com'
+CSRF_COOKIE_DOMAIN = 'kc-env-django.eba-fg2fphac.ap-southeast-2.elasticbeanstalk.com'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
