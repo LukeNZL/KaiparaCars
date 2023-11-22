@@ -126,12 +126,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ['https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
 CORS_ALLOW_METHODS = ["GET","POST"]
 CORS_ALLOW_HEADERS = [ "accept", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with" ]
-SESSION_COOKIE_HTTPONLY = False
-CSRF_COOKIE_HTTPONLY = False
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
+
 CORS_EXPOSE_HEADERS = [
     "Set-Cookie",
 ]
