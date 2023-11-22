@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication
 import stripe
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -87,7 +88,9 @@ class UserList(APIView):
         return Response(serializer.data)
     
 stripe.api_key = "sk_test_51MyNtpHWI00ENRWp3WaxRiGRLsD2HUnlt30BBCXXck5OnFTdDZ5LDU9V422Owy0MPeXVa3MJz35djreUB42429Tm00S9ylQUwp"
+
 MY_DOMAIN = "https://www.kaiparacars.com"
+@csrf_exempt
 def create_checkout_session(request):
     try:
         listingbuy=listing.objects.filter(id=1)
