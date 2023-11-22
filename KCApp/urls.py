@@ -13,7 +13,8 @@ urlpatterns = [
     path('mylistings/', views.MyListing, name='mylistings'),
     path('deletelisting/<int:listing_id>/', views.DeleteListing, name='deletelisting'),
     path('editlisting/<int:listing_id>/', views.EditListing, name='editlisting'),
-    
+    path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
+
     #userapi paths
     path('register', views.UserRegistration.as_view(), name='register'),
     path('login', views.UserLogin.as_view(), name='login'),

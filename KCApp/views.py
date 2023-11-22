@@ -5,13 +5,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render 
 from .models import listing
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .serializers import ListingSerializer, RegistrationSerializer, UserLoginSerializer, UserSerializer
 from rest_framework import viewsets, status,permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication
-
+import stripe
 
 # Create your views here.
 
@@ -85,6 +85,30 @@ class UserList(APIView):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
+    
+stripe.api_key = "sk_test_51MyNtpHWI00ENRWp3WaxRiGRLsD2HUnlt30BBCXXck5OnFTdDZ5LDU9V422Owy0MPeXVa3MJz35djreUB42429Tm00S9ylQUwp"
+MY_DOMAIN = "https://www.kaiparacars.com"
+def create_checkout_session(request):
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[
+                {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    'price': '1000',
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url=MY_DOMAIN + '?success=true',
+            cancel_url=MY_DOMAIN + '?canceled=true',
+        )
+    except Exception as e:
+        return HttpResponse(str(e))
+    
+    return HttpResponseRedirect(checkout_session.url)
+
+    
+      
 def LandingPage(request):
     return render(request, 'LandingPage.html')
 
