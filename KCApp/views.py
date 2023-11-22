@@ -90,12 +90,13 @@ stripe.api_key = "sk_test_51MyNtpHWI00ENRWp3WaxRiGRLsD2HUnlt30BBCXXck5OnFTdDZ5LD
 MY_DOMAIN = "https://www.kaiparacars.com"
 def create_checkout_session(request):
     try:
-        listingbuy=listing.objects.get(id=1)
+        listingbuy=listing.objects.filter(id=1)
+        l=listingbuy
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': int(listingbuy.price) * 100,
+                    'price': int(l.price) * 100,
                     'quantity': 1,
                 },
             ],
