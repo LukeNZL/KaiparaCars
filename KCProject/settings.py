@@ -117,13 +117,13 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1','https://main.d1le8jji4fni0v.amplifyapp.com','https://www.kaiparacars.com/']
+CSRF_TRUSTED_ORIGINS = ['http://*.127.0.0.1','https://main.d1le8jji4fni0v.amplifyapp.com','https://www.kaiparacars.com']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-CORS_ORIGIN_WHITELIST = ['https://www.kaiparacars.com/','https://main.d1le8jji4fni0v.amplifyapp.com','http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
+CORS_ORIGIN_WHITELIST = ['https://www.kaiparacars.com','https://main.d1le8jji4fni0v.amplifyapp.com','http://localhost:3000',"https://lukeapp.com",'http://192.168.1.29:3000','http://127.0.0.1:3000']
 CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ['https://www.kaiparacars.com/','https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
+CORS_ALLOWED_ORIGINS = ['https://www.kaiparacars.com','https://main.d1le8jji4fni0v.amplifyapp.com', 'http://127.0.0.1:3000']
 CORS_ALLOW_METHODS = ["GET","POST"]
 CORS_ALLOW_HEADERS = [ "accept", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with" ]
 #SESSION_COOKIE_HTTPONLY = False
