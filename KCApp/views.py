@@ -119,7 +119,7 @@ def create_checkout_session(request):
     except Exception as e:
         return HttpResponse(str(e))
     
-    return HttpResponseRedirect(checkout_session.url, code=303)
+    return HttpResponseRedirect(checkout_session.url)
 
     
       
