@@ -91,7 +91,7 @@ stripe.api_key = "sk_test_51MyNtpHWI00ENRWp3WaxRiGRLsD2HUnlt30BBCXXck5OnFTdDZ5LD
 
 MY_DOMAIN = "https://www.kaiparacars.com"
 @csrf_exempt
-def create_checkout_session(self, request, *args, **kwargs):
+def create_checkout_session(request, self, *args, **kwargs):
     prod_id=self.kwargs["id"]
     try:
         listingbuy=listing.objects.get(id=prod_id)
