@@ -94,15 +94,24 @@ MY_DOMAIN = "https://www.kaiparacars.com"
 def create_checkout_session(request):
     try:
         listingbuy=listing.objects.filter(id=1)
-        l=listingbuy
+        total=listingbuy.values_list('Price', flat=True)
+        
         checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': int(l.Price) * 100,
-                    'quantity': 1,
-                },
-            ],
+           line_items=[
+                    {
+                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                        #'price': 'price_1N6eFXJDzpA491w3wbEEK3GH',
+                        'price_data': {
+                            'currency': 'nzd',
+                            'product_data' : {
+                                'name' : "Cart",
+                            },
+                            'unit_amount' : total,
+
+                        },
+                        'quantity': 1,
+                    },
+                ],
             mode='payment',
             success_url=MY_DOMAIN + '?success=true',
             cancel_url=MY_DOMAIN + '?canceled=true',
@@ -110,7 +119,7 @@ def create_checkout_session(request):
     except Exception as e:
         return HttpResponse(str(e))
     
-    return HttpResponseRedirect(checkout_session.url)
+    return HttpResponseRedirect(checkout_session.url, code=303)
 
     
       
