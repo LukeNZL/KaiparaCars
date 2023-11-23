@@ -106,7 +106,7 @@ def create_checkout_session(request):
                             'product_data' : {
                                 'name' : "Cart",
                             },
-                            'unit_amount' : total,
+                            'unit_amount' : 1000,
 
                         },
                         'quantity': 1,
