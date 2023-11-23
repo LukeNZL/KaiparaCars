@@ -91,10 +91,10 @@ stripe.api_key = "sk_test_51MyNtpHWI00ENRWp3WaxRiGRLsD2HUnlt30BBCXXck5OnFTdDZ5LD
 
 MY_DOMAIN = "https://www.kaiparacars.com"
 @csrf_exempt
-def create_checkout_session(request):
+def create_checkout_session(self, request, *args, **kwargs):
+    prod_id=self.kwargs["id"]
     try:
-        listingbuy=listing.objects.filter(id=1)
-        total=listingbuy.values_list('Price', flat=True)
+        listingbuy=listing.objects.get(id=prod_id)
         
         checkout_session = stripe.checkout.Session.create(
            line_items=[
@@ -104,9 +104,9 @@ def create_checkout_session(request):
                         'price_data': {
                             'currency': 'nzd',
                             'product_data' : {
-                                'name' : "Cart",
+                                'name' : listingbuy.Title,
                             },
-                            'unit_amount' : 1000,
+                            'unit_amount' : int(listingbuy.Price*100),
 
                         },
                         'quantity': 1,
