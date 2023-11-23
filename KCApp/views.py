@@ -93,6 +93,17 @@ MY_DOMAIN = "https://www.kaiparacars.com"
 @csrf_exempt
 def create_checkout_session(request):
     try:
+
+        price = request.POST.get('price')
+        if price[-3] == '.':
+            cents = int (price[-2] + price[-1])
+            price = price[:-2]
+            price = price[:-1]
+            price = int(price) * 100
+            price = price + cents
+        else:
+            price = int(price) * 100
+
         
         checkout_session = stripe.checkout.Session.create(
            line_items=[
@@ -104,7 +115,7 @@ def create_checkout_session(request):
                             'product_data' : {
                                 'name' : "test",
                             },
-                            'unit_amount' : 12345,
+                            'unit_amount' : price,
 
                         },
                         'quantity': 1,
